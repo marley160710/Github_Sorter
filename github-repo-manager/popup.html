@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GitHub Repo Manager</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main class="app">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">GITHUB</p>
+          <h1>Repo Manager</h1>
+        </div>
+        <button id="refreshButton" class="icon-button" type="button" title="Repositories aktualisieren" aria-label="Repositories aktualisieren">↻</button>
+      </header>
+
+      <section id="connectionPanel" class="panel connection-panel">
+        <h2>Mit GitHub anmelden</h2>
+        <p class="muted">GitHub öffnet die Anmeldung und fragt deine Zustimmung ab. Du musst keinen Personal Access Token erstellen oder einfügen.</p>
+        <label for="clientIdInput">OAuth-App Client ID</label>
+        <div class="token-row">
+          <input id="clientIdInput" type="text" autocomplete="off" spellcheck="false" placeholder="Iv1.…">
+          <button id="loginButton" class="primary small" type="button">GitHub Login</button>
+        </div>
+        <p class="fineprint">Die Client ID ist öffentlich. Die einmalige Einrichtung der OAuth-App steht in der Anleitung.</p>
+        <details class="permissions-help">
+          <summary>Welche Rechte fragt GitHub ab?</summary>
+          <p>Die Anmeldung fragt <strong>repo</strong> für private Repos und <strong>delete_repo</strong> fürs Löschen ab. GitHub verwaltet das OAuth-Zugriffstoken nach deiner Zustimmung; die Erweiterung speichert es lokal im Browserprofil. Die OAuth-Rechte sind weit gefasst und nicht auf einzelne Repos begrenzt.</p>
+          <p>Du kannst den Zugriff jederzeit unter GitHub → Settings → Applications widerrufen.</p>
+        </details>
+      </section>
+
+      <section id="accountBar" class="account-bar hidden" aria-live="polite">
+        <span><span class="status-dot"></span><span id="accountName">Verbunden</span></span>
+        <button id="disconnectButton" class="text-button" type="button">Trennen</button>
+      </section>
+
+      <div id="notice" class="notice hidden" role="status" aria-live="polite"></div>
+      <details id="connectedPermissionsHelp" class="permissions-help connected-help hidden">
+        <summary>Login-Rechte ändern oder widerrufen</summary>
+        <p>GitHub erteilt der OAuth-App die angefragten Rechte <strong>repo</strong> und <strong>delete_repo</strong>. Wenn du den Zugriff widerrufen hast, melde dich erneut an. Der Zugriff lässt sich in GitHub unter Settings → Applications widerrufen.</p>
+      </details>
+
+      <section id="workspace" class="hidden">
+        <section class="panel create-panel">
+          <div class="section-heading">
+            <div>
+              <h2>Neues Repository</h2>
+              <p class="muted">Mit wenigen Angaben auf GitHub erstellen.</p>
+            </div>
+            <button id="toggleCreateButton" class="text-button" type="button" aria-expanded="false">＋ Erstellen</button>
+          </div>
+          <form id="createForm" class="hidden">
+            <label for="repoName">Name</label>
+            <input id="repoName" name="name" maxlength="100" required placeholder="mein-projekt">
+            <label for="repoDescription">Beschreibung <span class="optional">optional</span></label>
+            <input id="repoDescription" name="description" maxlength="350" placeholder="Worum geht es?">
+            <div class="form-options">
+              <label class="check-label"><input id="repoPrivate" type="checkbox" checked> Privat</label>
+              <label class="check-label"><input id="repoReadme" type="checkbox" checked> README erstellen</label>
+            </div>
+            <button id="createButton" class="primary full" type="submit">Repository erstellen</button>
+          </form>
+        </section>
+
+        <section class="repos-section">
+          <div class="section-heading repo-heading">
+            <div>
+              <h2>Deine Repositories <span id="repoCount" class="count">0</span></h2>
+              <p class="muted">Repos, die deinem GitHub-Konto gehören.</p>
+            </div>
+          </div>
+          <div class="repo-tools">
+            <input id="searchInput" type="search" placeholder="Repositories durchsuchen…" aria-label="Repositories durchsuchen">
+            <button id="selectVisibleButton" class="text-button" type="button">Sichtbare wählen</button>
+          </div>
+          <div id="repoList" class="repo-list" aria-live="polite"></div>
+          <div id="emptyState" class="empty-state hidden">Keine passenden Repositories gefunden.</div>
+          <div class="selection-bar">
+            <span id="selectionCount">0 ausgewählt</span>
+            <button id="deleteSelectedButton" class="danger" type="button" disabled>Auswahl löschen</button>
+          </div>
+          <div id="deleteConfirm" class="delete-confirm hidden">
+            <strong>Repos wirklich endgültig löschen?</strong>
+            <p id="deleteSummary" class="muted"></p>
+            <p class="warning">Das Löschen kann nicht rückgängig gemacht werden. Tippe <code>LOESCHEN</code>, um fortzufahren.</p>
+            <input id="deletePhrase" type="text" autocomplete="off" placeholder="LOESCHEN" aria-label="LOESCHEN zur Bestätigung eingeben">
+            <div class="confirm-actions">
+              <button id="cancelDeleteButton" class="secondary" type="button">Abbrechen</button>
+              <button id="confirmDeleteButton" class="danger" type="button" disabled>Endgültig löschen</button>
+            </div>
+          </div>
+        </section>
+      </section>
+      <div id="loading" class="loading hidden"><span class="spinner"></span> GitHub wird geladen…</div>
+      <footer><a href="https://github.com/settings/applications" target="_blank" rel="noreferrer">GitHub-Zugriff verwalten ↗</a><span>Nur Repositories deines Kontos</span></footer>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>

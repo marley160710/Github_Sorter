@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "GitHub Repo Manager",
+  "version": "1.1.0",
+  "description": "Eigene GitHub-Repositories finden, erstellen und gezielt löschen.",
+  "action": {
+    "default_title": "GitHub Repo Manager",
+    "default_popup": "popup.html"
+  },
+  "permissions": ["storage"],
+  "host_permissions": [
+    "https://api.github.com/*",
+    "https://github.com/*"
+  ]
+}

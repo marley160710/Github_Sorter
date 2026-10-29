@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mit GitHub verbinden</title>
+    <link rel="stylesheet" href="auth.css">
+  </head>
+  <body>
+    <main class="auth-card">
+      <p class="eyebrow">GITHUB REPO MANAGER</p>
+      <h1>Mit GitHub verbinden</h1>
+      <p class="intro">GitHub bestätigt deine Anmeldung. Der Zugriff wird erst nach deiner Freigabe erteilt.</p>
+
+      <div class="rights-note">
+        <strong>GitHub fragt diese Rechte an:</strong>
+        <ul>
+          <li><code>repo</code> – eigene öffentliche und private Repositories anzeigen und verwalten</li>
+          <li><code>delete_repo</code> – Repositories löschen</li>
+        </ul>
+        <p>Diese OAuth-Rechte umfassen alle Repositories, auf die dein Konto Zugriff hat. Die Erweiterung zeigt in ihrer Liste nur Repositories, die deinem Konto gehören. Prüfe auf der GitHub-Freigabeseite den App-Namen, den du selbst bei der Einrichtung vergeben hast.</p>
+      </div>
+
+      <div id="setupError" class="message error hidden" role="alert"></div>
+      <button id="startButton" class="primary" type="button">GitHub-Anmeldung starten</button>
+
+      <section id="verification" class="verification hidden" aria-live="polite">
+        <p id="statusText" class="status">Fordere Anmeldecode an…</p>
+        <div class="code-row">
+          <code id="userCode" class="user-code"></code>
+          <button id="copyButton" class="secondary" type="button">Code kopieren</button>
+        </div>
+        <a id="verifyLink" class="primary verify-link" href="https://github.com/login/device" target="_blank" rel="noopener noreferrer">GitHub öffnen und Code eingeben ↗</a>
+      </section>
+
+      <div id="successMessage" class="message success hidden" role="status"></div>
+      <p class="footnote">Lass diese Seite geöffnet, während du den Code bei GitHub bestätigst. Nach erfolgreicher Anmeldung kannst du dieses Tab schließen und die Erweiterung wieder öffnen.</p>
+    </main>
+    <script src="auth.js"></script>
+  </body>
+</html>

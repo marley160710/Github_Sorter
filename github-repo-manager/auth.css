@@ -1,0 +1,31 @@
+:root {
+  color-scheme: light;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #17212b;
+  background: #f6f8fa;
+}
+* { box-sizing: border-box; }
+body { min-width: 320px; margin: 0; padding: 36px 18px; }
+.auth-card { max-width: 520px; margin: 0 auto; padding: 26px; border: 1px solid #e1e5ea; border-radius: 14px; background: #fff; box-shadow: 0 8px 30px #17212b0b; }
+.eyebrow { margin: 0 0 6px; color: #667085; font-size: 10px; font-weight: 750; letter-spacing: .13em; }
+h1 { margin: 0; font-size: 25px; letter-spacing: -.03em; }
+.intro { margin: 9px 0 18px; color: #596575; font-size: 13px; line-height: 1.5; }
+.rights-note { margin: 0 0 18px; padding: 13px; border: 1px solid #d8dee4; border-radius: 9px; background: #f6f8fa; color: #374151; font-size: 12px; line-height: 1.5; }
+.rights-note ul { padding-left: 20px; margin: 7px 0; }
+.rights-note p { margin: 8px 0 0; color: #596575; }
+code { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; }
+.primary, .secondary { display: inline-flex; align-items: center; justify-content: center; min-height: 38px; padding: 0 14px; border: 0; border-radius: 8px; font: inherit; font-size: 12px; font-weight: 700; text-decoration: none; cursor: pointer; }
+.primary { color: #fff; background: #0969da; }
+.primary:hover { background: #075bb9; }
+.secondary { color: #283444; background: #eef1f4; border: 1px solid #d8dde3; }
+button:disabled { opacity: .55; cursor: not-allowed; }
+.verification { margin-top: 18px; padding-top: 16px; border-top: 1px solid #e1e5ea; }
+.status { color: #596575; font-size: 12px; }
+.code-row { display: flex; align-items: center; gap: 10px; margin: 10px 0 13px; }
+.user-code { flex: 1; padding: 12px; border-radius: 8px; background: #f0f3f6; color: #17212b; text-align: center; font-size: 22px; font-weight: 750; letter-spacing: .12em; }
+.verify-link { width: 100%; }
+.message { margin-top: 14px; padding: 11px 12px; border-radius: 8px; font-size: 12px; line-height: 1.5; }
+.message.error { color: #9b1c1c; background: #ffebe9; }
+.message.success { color: #116329; background: #dafbe1; }
+.footnote { margin: 18px 0 0; color: #77808c; font-size: 10px; line-height: 1.5; }
+.hidden { display: none !important; }
